@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F720FDA1-556D-45D0-BDC7-AA8A8921468A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Foo.Crm.BusinessLogic</RootNamespace>
+    <AssemblyName>Foo.Crm.BusinessLogic</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.CrmSdk.CoreAssemblies.8.0.2.1\lib\net45\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.IdentityModel.6.1.7600.16394\lib\net35\Microsoft.IdentityModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.CrmSdk.CoreAssemblies.8.0.2.1\lib\net45\Microsoft.Xrm.Sdk.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Actions\ContactActions\SetSalesRepesentativeAction.cs" />
+    <Compile Include="Actions\ContactActions\ValidatePeselIdAction.cs" />
+    <Compile Include="Actions\CrmActionBase.cs" />
+    <Compile Include="Actions\ICrmAction.cs" />
+    <Compile Include="Common\Consts\PluginExecutionStageEnum.cs" />
+    <Compile Include="Common\Factories\CrmActionFactory.cs" />
+    <Compile Include="Common\Factories\RepositoriesFactory.cs" />
+    <Compile Include="Common\Factories\ServicesFactory.cs" />
+    <Compile Include="Common\HandlerCache.cs" />
+    <Compile Include="Common\Consts\CrmConst.cs" />
+    <Compile Include="Common\Consts\CrmMessages.cs" />
+    <Compile Include="Common\Consts\CrmMessagesNames.cs" />
+    <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\Contact.cs" />
+    <Compile Include="Model\Opportunity.cs" />
+    <Compile Include="Model\OptionSets.cs" />
+    <Compile Include="Model\SystemUser.cs" />
+    <Compile Include="Model\XrmServiceContext.cs" />
+    <Compile Include="Plugins\Contacts\PreCreateHandler.cs" />
+    <Compile Include="Plugins\Contacts\PreValidateHandler.cs" />
+    <Compile Include="Plugins\PluginBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CrmUnitOfWorkRepository.cs" />
+    <Compile Include="Repositories\ICrmUnitOfWorkRepository.cs" />
+    <Compile Include="Repositories\IRepositoryEntity.cs" />
+    <Compile Include="Repositories\IRepositoryMessage.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\RepositoryEntity.cs" />
+    <Compile Include="Repositories\RepositoryMessage.cs" />
+    <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\CrmUnitOfWorkService.cs" />
+    <Compile Include="Services\IAccountService.cs" />
+    <Compile Include="Services\ICrmUnitOfWorkService.cs" />
+    <Compile Include="Services\IService.cs" />
+    <Compile Include="Services\IServiceEntityBase.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
+    <Compile Include="Services\ServiceEntityBase.cs" />
+    <Compile Include="Validators\PeselValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
